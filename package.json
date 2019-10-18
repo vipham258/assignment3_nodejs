@@ -1,0 +1,25 @@
+{
+  "name": "assignment3_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "enquirer": "^2.3.2",
+    "eslint": "^6.5.1",
+    "prettier": "^1.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vipham258/assignment3_nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vipham258/assignment3_nodejs/issues"
+  },
+  "homepage": "https://github.com/vipham258/assignment3_nodejs#readme"
+}

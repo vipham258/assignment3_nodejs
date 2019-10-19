@@ -1,4 +1,8 @@
-// main file and user interface
+/**
+ *  @fileOverview main file and user interface, presentation layer
+ *  @author       Vi Thi Phuong Pham
+ */
+
 const { Select, Form, Input, Confirm } = require("enquirer");
 const { loadCheeseRecords, saveCheeseRecords } = require("./persistence");
 
@@ -12,6 +16,8 @@ const OPTION_QUIT = "Quit";
 
 async function main() {
   let cheeseData;
+
+  //handle exception for reading file
   try {
     cheeseData = await loadCheeseRecords();
   } catch (error) {
@@ -21,12 +27,7 @@ async function main() {
 
   let shouldQuit = false;
   while (!shouldQuit) {
-    console.log("\nVi Pham is a sweetheart");
-
-    console.log(
-      "CheeseId of first record is ",
-      cheeseData.records[0].CheeseNameEn
-    );
+    console.log("\nName: Vi Pham Thi Phuong 040886894");
 
     const mainMenuPrompt = new Select({
       name: "mainMenu",
@@ -117,6 +118,7 @@ async function main() {
       } else {
         console.log("Update canceled");
       }
+      //delete option
     } else if (response === OPTION_DELETE) {
       const cheeseIdPrompt = new Input({
         name: "cheeseId",

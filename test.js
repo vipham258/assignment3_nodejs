@@ -1,5 +1,11 @@
+/**
+ *  @fileOverview unit test using jest to test create record, and delete record
+ *  @author       Vi Thi Phuong Pham
+ */
+
 const { createCheeseData } = require("./persistence");
 
+//fake data to test
 const testRecords = [
   {
     CheeseId: "374",
@@ -104,7 +110,8 @@ const testHeader = [
   "LastUpdateDate"
 ];
 
-test("records can be deleted", () => {
+//unit test using jest
+test("Name: Vi Pham Thi Phuong 040886894 \nrecords can be deleted", () => {
   const data = createCheeseData(testRecords, testHeader);
   expect(data.selectRecord("376")).toBeTruthy();
   data.deleteRecord("376");

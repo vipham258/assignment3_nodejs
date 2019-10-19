@@ -1,5 +1,7 @@
 /**
- *  @fileOverview something something
+ *  @fileOverview This file including persistence layer and business layer of the project
+ * it can read and write data using file IO
+ * hold CRUD function
  *  @author       Vi Thi Phuong Pham
  */
 
@@ -38,7 +40,7 @@ const readline = require("readline");
   }} CheeseData */
 
 /**
- *
+ * @description create cheese Data
  * @param {CheeseRecord[]} records
  * @param {string[]} header
  * @returns {CheeseData}
@@ -48,14 +50,17 @@ function createCheeseData(records, header) {
     records,
     header,
 
+    //create record and push it to records array
     createRecord(record) {
       records.push(record);
     },
 
+    //select the specific record from the array using cheeseID
     selectRecord(cheeseId) {
       return records.find(record => record.CheeseId === cheeseId);
     },
 
+    //update the specific record from the array using cheeseID
     updateRecord(cheeseId, record) {
       const index = records.findIndex(record => record.CheeseId === cheeseId);
       if (index !== -1) {
@@ -130,7 +135,7 @@ let columnIndex = [
 function loadCheeseRecords() {
   return new Promise((resolve, reject) => {
     let path = "canadianCheeseDirectory.csv";
-    let max = 10;
+    let max = 200;
     let counter = 0;
 
     //regex expression for (,)
@@ -197,7 +202,7 @@ function loadCheeseRecords() {
 }
 
 /**
- *
+ * @description saveCheeseRecords and write it to file
  * @param {CheeseData} cheeseData A modified copy of the data structure from loadCheeseRecords
  */
 function saveCheeseRecords(cheeseData) {

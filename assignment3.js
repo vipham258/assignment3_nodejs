@@ -11,8 +11,13 @@ const OPTION_DELETE = "Delete a record";
 const OPTION_QUIT = "Quit";
 
 async function main() {
-  //TODO: error handling (file missing)
-  let cheeseData = await loadCheeseRecords();
+  let cheeseData;
+  try {
+    cheeseData = await loadCheeseRecords();
+  } catch (error) {
+    console.warn("Unable to read cheese data! Exiting program");
+    return;
+  }
 
   let shouldQuit = false;
   while (!shouldQuit) {
@@ -57,19 +62,6 @@ async function main() {
           return {
             name: columnName,
             message: columnName
-            // validate:
-            //   columnName === cheeseData.header[0]
-            //     ? cheeseId => {
-            //         // make sure the id is not used
-            //         if (cheeseData.selectRecord(cheeseId)) {
-            //           return "CheeseId already used";
-            //         } else {
-            //           return true;
-            //         }
-            //       }
-            //     : value => {
-            //         return true;
-            //       }
           };
         })
       });

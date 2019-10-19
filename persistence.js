@@ -65,7 +65,6 @@ function createCheeseData(records, header) {
 
     deleteRecord(cheeseId) {
       const index = records.findIndex(record => record.CheeseId === cheeseId);
-      console.log(`index for ${cheeseId}`, index);
       if (index !== -1) {
         records.splice(index, 1);
       }
@@ -142,7 +141,13 @@ function loadCheeseRecords() {
 
     // read row data from file
     let readFile = fs.createReadStream(path);
+
+    readFile.on("error", error => {
+      reject(error);
+    });
+
     let rl = readline.createInterface({ input: readFile });
+
     rl.on("line", d => {
       //put the line into an array
       let totalRow = d.split(regex);
@@ -218,6 +223,7 @@ function saveCheeseRecords(cheeseData) {
 }
 
 module.exports = {
+  createCheeseData,
   loadCheeseRecords,
   saveCheeseRecords
 };
